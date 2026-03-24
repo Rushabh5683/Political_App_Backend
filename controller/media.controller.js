@@ -5,13 +5,14 @@ export const uploadMedia = async (req, res) => {
 
   try {
 
-    console.log(req,"REQUEST")
+   console.log("FILE:", req.file);
+console.log("PATH:", req.file?.path);
     const media = await MediaService.createMedia(
       req.file,
       req.body
     );
 
-    console.log(media,"MEDIA")
+   
 
 
     res.json(media);
