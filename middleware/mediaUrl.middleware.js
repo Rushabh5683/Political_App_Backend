@@ -1,8 +1,12 @@
 import multer from "multer";
+import path from "path";
+
+// ✅ ABSOLUTE PATH
+const uploadPath = path.join(process.cwd(), "uploads");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, uploadPath); // ✅ FIXED
   },
 
   filename: (req, file, cb) => {
@@ -12,6 +16,8 @@ const storage = multer.diskStorage({
 
 export const upload = multer({ storage });
 
+
+// 🔥 MEDIA URL MIDDLEWARE (KEEP AS IS)
 const mediaUrl = (req, res, next) => {
 
   const baseUrl =
