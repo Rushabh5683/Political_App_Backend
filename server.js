@@ -18,7 +18,8 @@ dotenv.config();
 const app = express();
 
 /// 🔥 CREATE UPLOADS FOLDER (IMPORTANT FIX)
-const uploadPath = path.join(process.cwd(), "uploads");
+const uploadPath = path.resolve("uploads"); 
+console.log("UPLOAD PATH:", uploadPath);
 
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
